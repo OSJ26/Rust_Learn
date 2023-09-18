@@ -1,13 +1,16 @@
 mod Rusty;
-use Rusty::is_odd_even;
+use std::io;
+use Rusty::*;
 fn main() {
-    let number = 42;
-    let check_number = is_odd_even(number);
+    let mut choice = String::new();
+    println!("Enter Choice O for check odd-even or T for Loop");
+    io::stdin()
+    .read_line(&mut choice)
+    .expect("Faild to read Data");
 
-    if check_number{
-        print!("{} is Even",number);
-    }
-    else {
-        print!("{} is Odd",number);
-    }
+    match  choice.trim() {
+        "O" => Rusty::is_odd_even(),
+        "T" => Rusty::infinite(),
+        _ => println!("Invalid Input"),
+    };
 }
